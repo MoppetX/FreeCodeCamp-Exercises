@@ -6,7 +6,6 @@
 // console.log( increment( 5, 2 ) ); // returns 7
 // console.log( increment( 5 ) ); // returns 6
 
-
 // Use the Rest Operator with Function Parameters
 // ===================================================================
 
@@ -20,7 +19,101 @@
 //   };
 // })();
 
-'use strict';
-const sum = ( ...args ) => (args.reduce( ( a, b ) => a + b, 0 ));
+// 'use strict';
+// const sum = ( ...args ) => (args.reduce( ( a, b ) => a + b, 0 ));
+//
+// console.log( sum( 1, 2, 3, 1 ) ); // 6
 
-console.log( sum( 1, 2, 3, 1 ) ); // 6
+// Use the Spread Operator to Evaluate Arrays In-Place
+// ==================================================================
+
+// const arr1 = ['JAN', 'FEB', 'MAR', 'APR', 'MAY'];
+// let arr2;
+// (function() {
+//   "use strict";
+//
+//   arr2 = [...arr1]; // change this line
+// })();
+// console.log(arr2);
+
+// Use Destructuring Assignment to Assign Variables from Objects
+// ==================================================================
+
+// Use destructuring to obtain the average temperature for tomorrow from the input
+// object AVG_TEMPERATURES, and assign value with key tomorrow to tempOfTomorrow in line.
+
+// const AVG_TEMPERATURES = {
+//   today: 77.5,
+//   tomorrow: 79
+// };
+//
+// function getTempOfTmrw( avgTemperatures ) {
+// // console.log( avgTemperatures.tomorrow );
+//   'use strict';
+//   // change code below this line
+//   const { tomorrow : tempOfTomorrow } = avgTemperatures; // change this line
+//   // const tempOfTomorrow = undefined; // change this line
+//   // change code above this line
+//   return tempOfTomorrow;
+// }
+
+// console.log( getTempOfTmrw( AVG_TEMPERATURES ) ); // should be 79
+
+// var voxel = {x: 3.6, y: 7.4, z: 6.54 };
+// const { x, y, z } = voxel; // x = 3.6, y = 7.4, z = 6.54
+// console.log( x, y , z );
+//
+// const { x : a, y : b, z : c } = voxel; // a = 3.6, b = 7.4, c = 6.54
+// console.log( a, b , c );
+
+
+
+// Use Destructuring Assignment to Assign Variables from Arrays
+// ==================================================================
+
+// let a = 8, b = 6;
+// (() => {
+//   "use strict";
+//   // change code below this line
+//
+//   // Use destructuring assignment to swap the values of a and b
+//   // so that a receives the value stored in b, and b receives the value stored in a.
+//   [b, a] = [a, b];
+//
+//   // change code above this line
+// })();
+// console.log(a); // should be 6
+// console.log(b); // should be 8
+//
+
+
+// Use Destructuring Assignment with the Rest Operator to Reassign Array Elements
+// ==================================================================
+
+
+const source = [1,2,3,4,5,6,7,8,9,10];
+function removeFirstTwo(list) {
+  "use strict";
+  // change code below this line
+  
+  // Use destructuring assignment with the rest operator to perform an effective
+  // Array.prototype.slice() so that arr is a sub-array of the original array
+  // source with the first two elements omitted.
+  
+  let [ ,, ...arr] = list; // change this
+  
+  // change code above this line
+  return arr;
+}
+const arr = removeFirstTwo(source);
+console.log(arr); // should be [3,4,5,6,7,8,9,10]
+console.log(source); // should be [1,2,3,4,5,6,7,8,9,10];
+
+
+
+
+
+
+
+
+
