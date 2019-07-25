@@ -66,8 +66,6 @@
 // const { x : a, y : b, z : c } = voxel; // a = 3.6, b = 7.4, c = 6.54
 // console.log( a, b , c );
 
-
-
 // Use Destructuring Assignment to Assign Variables from Arrays
 // ==================================================================
 
@@ -86,31 +84,71 @@
 // console.log(b); // should be 8
 //
 
-
 // Use Destructuring Assignment with the Rest Operator to Reassign Array Elements
 // ==================================================================
 
+//
+// const source = [1,2,3,4,5,6,7,8,9,10];
+// function removeFirstTwo(list) {
+//   "use strict";
+//   // change code below this line
+//
+//   // Use destructuring assignment with the rest operator to perform an effective
+//   // Array.prototype.slice() so that arr is a sub-array of the original array
+//   // source with the first two elements omitted.
+//
+//   let [ ,, ...arr] = list; // change this
+//
+//   // change code above this line
+//   return arr;
+// }
+// const arr = removeFirstTwo(source);
+// console.log(arr); // should be [3,4,5,6,7,8,9,10]
+// console.log(source); // should be [1,2,3,4,5,6,7,8,9,10];
 
-const source = [1,2,3,4,5,6,7,8,9,10];
-function removeFirstTwo(list) {
-  "use strict";
+
+// Create Strings using Template Literals
+// ==================================================================
+
+const result = {
+  success: ['max-length', 'no-amd', 'prefer-arrow-functions'],
+  failure: ['no-var', 'var-on-top', 'linebreak'],
+  skipped: ['id-blacklist', 'no-dup-keys']
+};
+
+function makeList( arr ) {
+  'use strict';
+  
   // change code below this line
   
-  // Use destructuring assignment with the rest operator to perform an effective
-  // Array.prototype.slice() so that arr is a sub-array of the original array
-  // source with the first two elements omitted.
+  // Use template literal syntax with backticks to display each entry of the result
+  // object's failure array. Each entry should be wrapped inside an li element with
+  // the class attribute text-warning, and listed within the resultDisplayArray.
   
-  let [ ,, ...arr] = list; // change this
+  // const resultDisplayArray = [];
+  //
+  // arr.forEach((item) => resultDisplayArray.push(
+  //   `<li class="text-warning">${item}</li>`
+  // ));
+  
+  // const resultDisplayArray = arr.forEach((item) => [`<li class="text-warning">${item}</li>`]
+  // );
+  
+  const resultDisplayArray = Array
+    .from(arr, item =>  `<li class="text-warning">${item}</li>`);
   
   // change code above this line
-  return arr;
+  
+  return resultDisplayArray;
 }
-const arr = removeFirstTwo(source);
-console.log(arr); // should be [3,4,5,6,7,8,9,10]
-console.log(source); // should be [1,2,3,4,5,6,7,8,9,10];
 
-
-
+/**
+ * makeList(result.failure) should return:
+ * [ `<li class="text-warning">no-var</li>`,
+ *   `<li class="text-warning">var-on-top</li>`,
+ *   `<li class="text-warning">linebreak</li>` ]
+ **/
+const resultDisplayArray = makeList( result.failure );
 
 
 
