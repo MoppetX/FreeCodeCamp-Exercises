@@ -6,8 +6,9 @@
 // console.log( increment( 5, 2 ) ); // returns 7
 // console.log( increment( 5 ) ); // returns 6
 
+// -----------------------------------------------------------------------------------------
 // Use the Rest Operator with Function Parameters
-// ===================================================================
+// -----------------------------------------------------------------------------------------
 
 // Modify the function sum so that it uses the rest operator and it works
 // in the same way with any number of parameters.
@@ -24,8 +25,9 @@
 //
 // console.log( sum( 1, 2, 3, 1 ) ); // 6
 
+// -----------------------------------------------------------------------------------------
 // Use the Spread Operator to Evaluate Arrays In-Place
-// ==================================================================
+// -----------------------------------------------------------------------------------------
 
 // const arr1 = ['JAN', 'FEB', 'MAR', 'APR', 'MAY'];
 // let arr2;
@@ -36,8 +38,9 @@
 // })();
 // console.log(arr2);
 
+// -----------------------------------------------------------------------------------------
 // Use Destructuring Assignment to Assign Variables from Objects
-// ==================================================================
+// -----------------------------------------------------------------------------------------
 
 // Use destructuring to obtain the average temperature for tomorrow from the input
 // object AVG_TEMPERATURES, and assign value with key tomorrow to tempOfTomorrow in line.
@@ -66,8 +69,9 @@
 // const { x : a, y : b, z : c } = voxel; // a = 3.6, b = 7.4, c = 6.54
 // console.log( a, b , c );
 
+// -----------------------------------------------------------------------------------------
 // Use Destructuring Assignment to Assign Variables from Arrays
-// ==================================================================
+// -----------------------------------------------------------------------------------------
 
 // let a = 8, b = 6;
 // (() => {
@@ -84,8 +88,9 @@
 // console.log(b); // should be 8
 //
 
+// -----------------------------------------------------------------------------------------
 // Use Destructuring Assignment with the Rest Operator to Reassign Array Elements
-// ==================================================================
+// -----------------------------------------------------------------------------------------
 
 //
 // const source = [1,2,3,4,5,6,7,8,9,10];
@@ -106,51 +111,83 @@
 // console.log(arr); // should be [3,4,5,6,7,8,9,10]
 // console.log(source); // should be [1,2,3,4,5,6,7,8,9,10];
 
-
+// -----------------------------------------------------------------------------------------
 // Create Strings using Template Literals
-// ==================================================================
+// -----------------------------------------------------------------------------------------
 
-const result = {
-  success: ['max-length', 'no-amd', 'prefer-arrow-functions'],
-  failure: ['no-var', 'var-on-top', 'linebreak'],
-  skipped: ['id-blacklist', 'no-dup-keys']
-};
+// const result = {
+//   success: ['max-length', 'no-amd', 'prefer-arrow-functions'],
+//   failure: ['no-var', 'var-on-top', 'linebreak'],
+//   skipped: ['id-blacklist', 'no-dup-keys']
+// };
+//
+// function makeList( arr ) {
+//   'use strict';
 
-function makeList( arr ) {
+// change code below this line
+
+// Use template literal syntax with backticks to display each entry of the result
+// object's failure array. Each entry should be wrapped inside an li element with
+// the class attribute text-warning, and listed within the resultDisplayArray.
+
+// const resultDisplayArray = [];
+//
+// arr.forEach((item) => resultDisplayArray.push(
+//   `<li class="text-warning">${item}</li>`
+// ));
+
+// const resultDisplayArray = arr.forEach((item) => [`<li class="text-warning">${item}</li>`]
+// );
+
+//   const resultDisplayArray = Array
+//     .from( arr, item => `<li class="text-warning">${item}</li>` );
+//
+//   // change code above this line
+//
+//   return resultDisplayArray;
+// }
+//
+// /**
+//  * makeList(result.failure) should return:
+//  * [ `<li class="text-warning">no-var</li>`,
+//  *   `<li class="text-warning">var-on-top</li>`,
+//  *   `<li class="text-warning">linebreak</li>` ]
+//  **/
+// const resultDisplayArray = makeList( result.failure );
+
+// -----------------------------------------------------------------------------------------
+// Use getters and setters to Control Access to an Object
+// -----------------------------------------------------------------------------------------
+
+function makeClass() {
   'use strict';
+  /* Alter code below this line */
   
-  // change code below this line
+  class Thermostat {
+    constructor( fahrenheit ) {
+      this.fahrenheit = fahrenheit;
+    }
+    
+    get temperature() {
+      return (5 / 9 * (this.fahrenheit - 32));
+    }
+    
+    set temperature( celcius ) {
+      this.fahrenheit = (celcius * 9.0 / 5 + 32);
+    }
+  }
   
-  // Use template literal syntax with backticks to display each entry of the result
-  // object's failure array. Each entry should be wrapped inside an li element with
-  // the class attribute text-warning, and listed within the resultDisplayArray.
-  
-  // const resultDisplayArray = [];
-  //
-  // arr.forEach((item) => resultDisplayArray.push(
-  //   `<li class="text-warning">${item}</li>`
-  // ));
-  
-  // const resultDisplayArray = arr.forEach((item) => [`<li class="text-warning">${item}</li>`]
-  // );
-  
-  const resultDisplayArray = Array
-    .from(arr, item =>  `<li class="text-warning">${item}</li>`);
-  
-  // change code above this line
-  
-  return resultDisplayArray;
+  /* Alter code above this line */
+  return Thermostat;
 }
 
-/**
- * makeList(result.failure) should return:
- * [ `<li class="text-warning">no-var</li>`,
- *   `<li class="text-warning">var-on-top</li>`,
- *   `<li class="text-warning">linebreak</li>` ]
- **/
-const resultDisplayArray = makeList( result.failure );
-
-
+const Thermostat = makeClass();
+// console.log( Thermostat.fahrenheit );
+const thermos = new Thermostat( 76 ); // setting in Fahrenheit scale
+let temp = thermos.temperature; // 24.44 in C
+thermos.temperature = 26;
+temp = thermos.temperature; // 26 in C
+// console.log( temp );
 
 
 
