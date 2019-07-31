@@ -6,7 +6,7 @@ function repeatStringNumTimes( str, num ) {
   
   // M Y  S O L U T I O N
   if ( num <= 0 ) {
-    return '!';
+    return '';
   }
   
   let echoString = '';
