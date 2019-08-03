@@ -13,31 +13,46 @@
 function mutation( arr ) {
   
   // M Y  S O L U T I O N
-  let [[...split1], [...split2], ...rest] = [...arr];
+  let [str, [...test], ...rest] = [...arr];
   
-  // console.log( split1.findIndex( split2[1] ) );
+  test.forEach( letter => {
+    if ( !str.toUpperCase().includes( letter.toUpperCase() ) ) {
+      return false;
+    }
+  } );
   
-  console.log( split2.forEach( letter => split1.indexOf( letter ) >= 0 ) );
-  console.log( split1 );
-  console.log( split2 );
-  
-  return arr;
+  return true;
 }
 
-mutation( ['hello', 'hey'] );
-
-// The findIndex() method returns the index of the first element in the array that satisfies
-// the provided testing function. Otherwise, it returns -1, indicating that no element passed the test.
-
-// The findIndex() method returns the index of the first element in the array that satisfies the
-// provided testing function. Otherwise, it returns -1, indicating that no element passed the test.
+// console.log( mutation( ['hello', 'hey'] ) );
+// console.log( mutation( ['hello', 'Hello'] ) );
+console.log( mutation( ['zyxwvutsrqponmlkjihgfedcba', 'qrstu'] ) );
+// console.log( mutation( ['zyxwvutsrqponmlkjihgfedcba', 'qrstu'] ) );
 
 //
 // F C C  S O L U T I O N S
 // B A S I C
+function mutation1( arr ) {
+  var test = arr[1].toLowerCase();
+  var target = arr[0].toLowerCase();
+  for ( var i = 0; i < test.length; i++ ) {
+    if ( target.indexOf( test[i] ) < 0 ) {
+      return false;
+    }
+  }
+  return true;
+}
 
 //
 // I N T E R M E D I A T E  Solution
+function mutation2( arr ) {
+  return arr[1].toLowerCase()
+               .split( '' )
+               .every( ( letter ) => {
+                 return arr[0].toLowerCase()
+                              .indexOf( letter ) !== -1;
+               } );
+}
 
 //
 // A D V A N C E D  Solution
