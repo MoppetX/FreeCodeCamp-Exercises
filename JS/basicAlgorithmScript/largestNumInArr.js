@@ -7,18 +7,10 @@ function largestOfFour( arr ) {
   // M Y  S O L U T I O N
   // to deal with only a simple array at a time, we're mapping
   // then we reduce the current array down to its largest num and return that
-  // let largestArr = arr.map( ( elem ) => {
-  //   return elem.reduce( ( prev, curr ) => {
-  //     return prev > curr ? prev : curr;
-  //   } );
-  // } );
   
-  //  A L L  I N L I N E
-  return arr.map( ( elem ) => {
-    return elem.reduce( ( prev, curr ) => {
-      
+  return arr.map( ( subArr ) => {
+    return subArr.reduce( ( prev, curr ) => {
       return prev > curr ? prev : curr;
-      
     } );
   } );
 }

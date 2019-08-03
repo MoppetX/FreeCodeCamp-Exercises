@@ -6,11 +6,10 @@ function confirmEnding(str, target) {
   return str.substring( str.length - target.length ) === target;
 }
 
-console.log(confirmEnding("Bastian", "g"));
+console.log(confirmEnding("Bastian", "Bastiang"));
+// console.log(confirmEnding2("Bastian", "Bastiang"));
 
 // F C C  S O L U T I O N
-//
-// B A S I C Solution
 
 //
 // I N T E R M E D I A T E  Solution

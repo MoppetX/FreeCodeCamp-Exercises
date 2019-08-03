@@ -8,10 +8,12 @@ function truncateString(str, num) {
   return str.length <= num ? str : str.slice(0, num) + "...";
 }
 
-console.log( truncateString( 'A-tisket a-tasket A green and yellow basket',
-                             'A-tisket a-tasket A green and yellow basket'.length ) );
+console.log( truncateString( 'A-tisket a-tasket A green and yellow basket', 8) );
+console.log( truncateString2( 'A-tisket a-tasket A green and yellow basket', 8) );
+console.log( truncateString3( 'A-tisket a-tasket A green and yellow basket', 8) );
 
-console.log( truncateString( "A-", 1 ) );
+
+// console.log( truncateString( "A-", 1 ) );
 
 
 // F C C  S O L U T I O N S

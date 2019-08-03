@@ -1,3 +1,6 @@
+// Return the length of the longest word in the provided sentence.
+// Your response should be a number.
+
 function findLongestWordLength( str ) {
   
   // M Y  S O L U T I O N
@@ -5,15 +8,12 @@ function findLongestWordLength( str ) {
   // sort the array from longest to shortest word,
   // return longest word on index 0
   
-  // misread, should return a number
   return str
     .match( /\w+/g )
-    .sort( ( a, b ) => b.length - a.length )
-    [0]
-    .length;
+    .sort( ( a, b ) => b.length - a.length )[0].length;
 }
 
-// console.log( findLongestWordLength( 'The quick brown fox jumped over the lazy dog' ) );;
+console.log( findLongestWordLength( 'The quick brown fox jumped over the lazy dog' ) );
 
 // F C C  S O L U T I O N
 // B A S I C
@@ -31,7 +31,7 @@ function findLongestWordLength2( str ) {
   return maxLength;
 }
 
-console.log( findLongestWordLength2( 'The quick brown fox jumped over the lazy dog' ) );
+// console.log( findLongestWordLength2( 'The quick brown fox jumped over the lazy dog' ) );
 
 //
 // I N T E R M E D I A T E  Solution

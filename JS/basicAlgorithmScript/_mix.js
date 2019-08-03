@@ -1,3 +1,16 @@
+//
+// F C C  S O L U T I O N S
+// B A S I C
+
+//
+// I N T E R M E D I A T E  Solution
+
+
+//
+// A D V A N C E D  Solution
+
+
+
 // ----------------------------------------------------------------------------------
 // L E S S O N:
 function findElement( arr, func ) {

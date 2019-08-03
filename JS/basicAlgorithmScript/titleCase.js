@@ -33,6 +33,9 @@ function titleCase2( str ) {
   return updatedTitle.join( ' ' );
 }
 
+console.log( titleCase2( 'I\'m a little tea pot' ) );
+
+
 //
 // I N T E R M E D I A T E  Solution
 

@@ -8,6 +8,7 @@
 // it will look like [3,5,20] and 19 is less than 20 (index 2) and greater than 5 (index 1).
 
 function getIndexToIns( arr, num ) {
+  
   // M Y  S O L U T I O N
   arr.push( num );
   return arr.sort( ( a, b ) => a - b )

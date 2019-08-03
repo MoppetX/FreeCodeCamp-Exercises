@@ -15,6 +15,7 @@ function frankenSplice(arr1, arr2, n) {
 }
 
 console.log( frankenSplice( [1, 2, 3], [4, 5, 6], 1 ) );
+console.log( frankenSplice2( [1, 2, 3], [4, 5, 6], 1 ) );
 
 
 // F C C  S O L U T I O N S
