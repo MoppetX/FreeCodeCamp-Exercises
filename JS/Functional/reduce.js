@@ -31,20 +31,13 @@ let averageRating = watchList
 
 console.log( averageRating );
 
-// S T E V E
-// ({ count, total } = watchList
-//   .filter( movie => movie['Director'] === 'Christopher Nolan' )
-//   .reduce( ( acc, curr ) => {
-//              acc.count += 1;
-//              acc.total += parseFloat( curr['imdbRating'] );
 //
-//              return acc;
-//            },
-//            {
-//              count: 0,
-//              total: 0
-//            }
-//   ));
-//
-// console.log( total / count );
-// console.log( avg );
+// F C C  S O L U T I O N S
+
+var averageRating2 = watchList
+  .filter( x => x.Director === 'Christopher Nolan' )
+  .map(
+    x => Number( x.imdbRating ) )
+  .reduce( ( x1, x2 ) => x1 + x2 ) / watchList.filter( x => x.Director === 'Christopher Nolan' ).length;
+
+console.log( averageRating2 );
