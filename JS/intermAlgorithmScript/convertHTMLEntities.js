@@ -9,42 +9,6 @@ function convertHTML( str ) {
   
   let dict = {
     '&': '&amp;',
-    '<': '&​lt;',
-    '>': '&​gt;',
-    '\"': '&​quot;',
-    '\'': '&​apos;'
-  };
-  
-  let newArr = [...str].map( character => {
-    
-    console.log( character );
-    
-    switch ( character ) {
-      case '&':
-        return '&amp;';
-      case '<':
-        return '&​lt;';
-      case '>':
-        return '&​gt;';
-      case '\"':
-        return '&​quot;';
-      case '\'':
-        return '&​apos;';
-      default:
-        return character;
-    }
-    
-  } );
-  
-  console.log( newArr.join( '' ) );
-  
-  return str;
-}
-
-function convertHTML1( str ) {
-  
-  let dict = {
-    '&': '&amp;',
     '<': '&lt;',
     '>': '&gt;',
     '\"': '&quot;',
@@ -55,8 +19,8 @@ function convertHTML1( str ) {
                  .join( '' );
 }
 
-// console.log( convertHTML1( 'Dolce & Gabbana' ) );
-// console.log( convertHTML1( 'Hamburgers < Pizza < Tacos' ) );
+// console.log( convertHTML( 'Dolce & Gabbana' ) );
+// console.log( convertHTML( 'Hamburgers < Pizza < Tacos' ) );
 
 // ------------------------------------------------------------------------
 //   T E S T S
@@ -69,7 +33,7 @@ const tests = [
   ['<>', '&lt;&gt;']
 ];
 
-let algorithmToTest = convertHTML1;
+let algorithmToTest = convertHTML;
 
 let input,
     expected;
