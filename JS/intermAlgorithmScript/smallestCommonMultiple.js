@@ -12,44 +12,49 @@ divisible by all numbers between 1 and 3. The answer here would be 6.
 function smallestCommons( arr ) {
   
   // sort array to make sure we start with the smaller int
-  const sortedArr = arr.sort( ( a, b ) => a - b );
-  
-  const [lowest, highest] = sortedArr;
-  
-  // console.log( sortedArr, higherInt );
+  const [lowest, highest] = arr.sort( ( a, b ) => a - b );
   
   // testing for sameness
   if ( lowest === highest ) {
     return highest;
   }
   
-  let inbetween = [];
-  
-  // create array of all numbers between int1 and int2
-  for ( let i = lowest; i < arr[arr.length - 1]; i++ ) {
-    inbetween.push( i );
-  }
-  
   // find highest possible multiple
-  const highestMultiple = (inbetween.reduce( ( acc, cur ) => acc * cur )) * highest;
+  let highestMultiple = factorialise( lowest, highest );
+  
+  // write factorial func
+  function factorialise( low, high ) {
+    let multi = 1;
+    for ( let i = low; i <= high; i++ ) {
+      multi *= i;
+    }
+    return multi;
+  }
   
   let currentMultiple = 0;
   
   while ( currentMultiple <= highestMultiple ) {
     currentMultiple += highest;
-    // console.log( currentMultiple );
     
-    if ( inbetween.every( value => currentMultiple % value === 0 ) ) {
+    if ( isMultipleOfAll( currentMultiple ) ) {
       return currentMultiple;
     }
+  }
+  
+  function isMultipleOfAll( multi ) {
+    let flag = true;
     
+    for ( let i = lowest; i < highest; i++ ) {
+      multi % i === 0 ? flag : flag = false;
+    }
+    return flag;
   }
   
   return highestMultiple;
 }
 
 // smallestCommons( [5, 1] );
-console.log( smallestCommons( [2, 10] ) );
+console.log( smallestCommons( [5, 1] ) );
 
 //
 // ------------------------------------------------------------------------
@@ -67,7 +72,7 @@ let algorithmToTest = smallestCommons;
 let input,
     expected;
 
-runTests();
+// runTests();
 
 function runTests() {
   tests.forEach( test => {
@@ -90,8 +95,105 @@ function runTests() {
 // F C C  S O L U T I O N S
 // B A S I C
 
+function smallestCommons1( arr ) {
+  // Sort array from greater to lowest
+  // This line of code was from Adam Doyle (http://github.com/Adoyle2014)
+  arr.sort( function( a, b ) {
+    return b - a;
+  } );
+  
+  // Create new array and add all values from greater to smaller from the
+  // original array.
+  var newArr = [];
+  for ( var i = arr[0]; i >= arr[1]; i-- ) {
+    newArr.push( i );
+  }
+  
+  // Variables needed declared outside the loops.
+  var quot = 0;
+  var loop = 1;
+  var n;
+  
+  // Run code while n is not the same as the array length.
+  do {
+    quot = newArr[0] * loop * newArr[1];
+    for ( n = 2; n < newArr.length; n++ ) {
+      if ( quot % newArr[n] !== 0 ) {
+        break;
+      }
+    }
+    
+    loop++;
+  } while ( n !== newArr.length );
+  
+  return quot;
+}
+
 // ------------------------------------------------------------------------
 // I N T E R M E D I A T E  Solution
 
+function smallestCommons2( arr ) {
+  var range = [];
+  for ( var i = Math.max( arr[0], arr[1] ); i >= Math.min( arr[0], arr[1] ); i-- ) {
+    range.push( i );
+  }
+  
+  // can use reduce() in place of this block
+  var lcm = range[0];
+  
+  for ( i = 1; i < range.length; i++ ) {
+    var GCD = gcd( lcm, range[i] );
+    lcm = (lcm * range[i]) / GCD;
+  }
+  return lcm;
+  
+  function gcd( x, y ) {    // Implements the Euclidean Algorithm
+    if ( y === 0 ) {
+      return x;
+    }
+    else {
+      return gcd( y, x % y );
+    }
+  }
+}
+
 // ------------------------------------------------------------------------
 // A D V A N C E D Solution
+
+function smallestCommons3( arr ) {
+  
+  // range
+  let min = Math.min.apply( null, arr );
+  let max = Math.max.apply( null, arr );
+  
+  let smallestCommon = lcm( min, min + 1 );
+  
+  while ( min < max ) {
+    min++;
+    smallestCommon = lcm( smallestCommon, min );
+  }
+  
+  return smallestCommon;
+}
+
+/**
+ * Calculates Greatest Common Divisor
+ * of two nubers using Euclidean algorithm
+ * https://en.wikipedia.org/wiki/Euclidean_algorithm
+ */
+function gcd( a, b ) {
+  while ( b > 0 ) {
+    let tmp = a;
+    a = b;
+    b = tmp % b;
+  }
+  return a;
+}
+
+/**
+ * Calculates Least Common Multiple
+ * for two numbers utilising GCD
+ */
+function lcm( a, b ) {
+  return (a * b / gcd( a, b ));
+}
