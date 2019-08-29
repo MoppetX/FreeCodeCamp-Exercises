@@ -54,7 +54,7 @@ function smallestCommons( arr ) {
 }
 
 // smallestCommons( [5, 1] );
-console.log( smallestCommons( [5, 1] ) );
+console.log( smallestCommons3( [13, 45] ) );
 
 //
 // ------------------------------------------------------------------------
@@ -67,7 +67,7 @@ const tests = [
   [[1, 13], 360360]
 ];
 
-let algorithmToTest = smallestCommons;
+let algorithmToTest = smallestCommons4;
 
 let input,
     expected;
@@ -89,6 +89,35 @@ function runTests() {
       console.log( `SUCCESS: Got "${expected}" for "${input}"` );
     }
   } );
+}
+
+// S T E V E' S  S O LU T I O N
+
+function smallestCommons4( arr ) {
+  if ( arr[0] > arr[1] ) {
+    arr = [arr[1], arr[0]];
+  }
+  
+  const low = arr[0];
+  const high = arr[1];
+  
+  let lcm = high;
+  
+  let found = false;
+  
+  while ( !found ) {
+    for ( let i = low; i <= high; i++ ) {
+      if ( lcm % i !== 0 ) {
+        // one failed so increase the minimum possible and try again.
+        lcm += high;
+        found = false;
+        break;
+      }
+      // all passed. done.
+      found = true;
+    }
+  }
+  return lcm;
 }
 
 // ------------------------------------------------------------------------
