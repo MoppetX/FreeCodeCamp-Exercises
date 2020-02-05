@@ -4,19 +4,17 @@
 // Begin inserting elements at index n of the second array.
 // Return the resulting array. The input arrays should remain the same after the function runs.
 
-
 function frankenSplice(arr1, arr2, n) {
   // It's alive. It's alive!
-  
+
   // M Y  S O L U T I O N
-  let frankenArr = arr2.slice( 0, arr2.length );
-  frankenArr.splice( n, 0, ...arr1 );
+  let frankenArr = arr2.slice(0, arr2.length);
+  frankenArr.splice(n, 0, ...arr1);
   return frankenArr;
 }
 
-console.log( frankenSplice( [1, 2, 3], [4, 5, 6], 1 ) );
-console.log( frankenSplice2( [1, 2, 3], [4, 5, 6], 1 ) );
-
+console.log(frankenSplice([1, 2, 3], [4, 5, 6], 1));
+console.log(frankenSplice2([1, 2, 3], [4, 5, 6], 1));
 
 // F C C  S O L U T I O N S
 //
@@ -31,4 +29,3 @@ function frankenSplice2(arr1, arr2, n) {
   }
   return localArray;
 }
-

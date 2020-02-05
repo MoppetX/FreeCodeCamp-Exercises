@@ -10,51 +10,48 @@ These methods must be the only available means of interacting with the object.
 // M Y  S O L U T I O N
 
 // this is a CONSTRUCTOR, symbolized by the capital P
-let Person = function( firstAndLast ) {
-  this.first = firstAndLast.split( ' ' )[0];
-  this.last = firstAndLast.split( ' ' )[1];
-  
+let Person = function(firstAndLast) {
+  this.first = firstAndLast.split(' ')[0];
+  this.last = firstAndLast.split(' ')[1];
+
   // Object.defineProperties( this, 'fullName'{
-    // get: function() {
-    //   return firstName + ' ' + lastName;
-    // },
-    // set: function(name) {
-    //   var words = name.split(' ');
-    //   this.firstName = words[0] || '';
-    //   this.lastName = words[1] || '';
-    // }
-    // getFirstName() {
-    //   return this.first;
-    // },
-    // getLastName() {
-    //   return this.last;
-    // },
-    // 'getFullName': function() {
-    //   return `${this.first} ${this.last}`;
-    // },
-    //
-    // setFirstName( firstName ) {
-    //   this.first = firstName;
-    // },
-    // setLastName( lastName ) {
-    //   this.last = lastName;
-    // },
-    // setFullName( firstAndLast ) {
-    //   this.first = firstAndLast.split( ' ' )[0];
-    //   this.last = firstAndLast.split( ' ' )[1];
-    // }
+  // get: function() {
+  //   return firstName + ' ' + lastName;
+  // },
+  // set: function(name) {
+  //   var words = name.split(' ');
+  //   this.firstName = words[0] || '';
+  //   this.lastName = words[1] || '';
+  // }
+  // getFirstName() {
+  //   return this.first;
+  // },
+  // getLastName() {
+  //   return this.last;
+  // },
+  // 'getFullName': function() {
+  //   return `${this.first} ${this.last}`;
+  // },
+  //
+  // setFirstName( firstName ) {
+  //   this.first = firstName;
+  // },
+  // setLastName( lastName ) {
+  //   this.last = lastName;
+  // },
+  // setFullName( firstAndLast ) {
+  //   this.first = firstAndLast.split( ' ' )[0];
+  //   this.last = firstAndLast.split( ' ' )[1];
+  // }
   // } );
-  
 
   // get FullName() {
   //   return `${this.first} ${this.last}`;
   // },
-  
-  
 };
 
-let bob = new Person( 'Bob Ross' );
-console.log( JSON.stringify( bob ) );
+let bob = new Person('Bob Ross');
+console.log(JSON.stringify(bob));
 // console.log( bob instanceof Person );
 bob.getFullName();
 

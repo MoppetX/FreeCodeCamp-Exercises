@@ -4,8 +4,8 @@
   "description": "",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "format": "pretty-quick --pattern \"src/**/*.*(js|jsx|scss|sass|css|json|ts|html)\"",
-    "format:full": "prettier --write \"src/**/*.{js,jsx,css,htm,json,ts,html,sass,scss}\""
+    "format": "pretty-quick --pattern \"JS_algorithm_exercises/**/*.*(js|jsx|scss|sass|css|json|ts|html)\"",
+    "format:full": "prettier --write \"JS_algorithm_exercises/**/*.{js,jsx,css,htm,json,ts,html,sass,scss}\""
   },
   "keywords": [],
   "author": "",

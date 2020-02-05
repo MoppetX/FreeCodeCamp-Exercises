@@ -9,27 +9,27 @@ are 1, 1, 3, and 5.
 
 // M Y  S O L U T I O N
 
-function sumFibs( num ) {
-  
-  function createFibSequence( num ) {
+function sumFibs(num) {
+  function createFibSequence(num) {
     let fib = [0, 1];
     let i = 2;
-    
-    while ( fib[fib.length - 1] <= num ) {
+
+    while (fib[fib.length - 1] <= num) {
       // console.log( `I: ${i}` );
-      fib.push( (fib[i - 2] + fib[i - 1]) );
+      fib.push(fib[i - 2] + fib[i - 1]);
       i++;
     }
-    
+
     // console.log( `FIB SEQ: ${fib}` );
-    return fib.slice( -1 ) > num ? fib.slice( 0, fib.length - 1 ) : fib;
+    return fib.slice(-1) > num ? fib.slice(0, fib.length - 1) : fib;
   }
-  
-  return createFibSequence( num ).filter( value => value % 2 > 0 )
-                                 .reduce( ( acc, cur ) => acc + cur, 0 );
+
+  return createFibSequence(num)
+    .filter(value => value % 2 > 0)
+    .reduce((acc, cur) => acc + cur, 0);
 }
 
-console.log( sumFibs( 10 ) );
+console.log(sumFibs(10));
 
 // sumFibs( 10 );
 
@@ -41,31 +41,29 @@ const tests = [
   [1000, 1785],
   [4000000, 4613732],
   [4, 5],
-  [75024, 60696]
+  [75024, 60696],
 ];
 
 let algorithmToTest = sumFibs;
 
-let input,
-    expected;
+let input, expected;
 
 runTests();
 
 function runTests() {
-  tests.forEach( test => {
+  tests.forEach(test => {
     [input, expected] = test;
-    
-    let results = algorithmToTest( input );
-    
-    if ( results !== expected ) {
+
+    let results = algorithmToTest(input);
+
+    if (results !== expected) {
       console.error(
-        `FAILED:  "${input}" | got "${results}" | expected >${expected}<`
+        `FAILED:  "${input}" | got "${results}" | expected >${expected}<`,
       );
+    } else {
+      console.log(`SUCCESS: Got "${expected}" for "${input}"`);
     }
-    else {
-      console.log( `SUCCESS: Got "${expected}" for "${input}"` );
-    }
-  } );
+  });
 }
 
 // ------------------------------------------------------------------------
@@ -80,11 +78,11 @@ function sumFibs1(num) {
     if (currNumber % 2 !== 0) {
       result += currNumber;
     }
-    
+
     currNumber += prevNumber;
     prevNumber = currNumber - prevNumber;
   }
-  
+
   return result;
 }
 
@@ -95,18 +93,18 @@ function sumFibs2(num) {
   // Perform checks for the validity of the input
   if (num < 0) return -1;
   if (num === 0 || num === 1) return 1;
-  
+
   // Create an array of fib numbers till num
   const arrFib = [1, 1];
   let nextFib = 0;
-  
+
   // We put the new Fibonacci numbers to the front so we
   // don't need to calculate the length of the array on each
   // iteration
-  while((nextFib = arrFib[0] + arrFib[1]) <= num) {
+  while ((nextFib = arrFib[0] + arrFib[1]) <= num) {
     arrFib.unshift(nextFib);
   }
-  
+
   // Sum only the odd numbers and return the value
   return arrFib.reduce((acc, curr) => {
     return acc + curr * (curr % 2);

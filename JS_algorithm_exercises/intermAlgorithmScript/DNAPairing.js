@@ -7,31 +7,31 @@ The character and its pair are paired up in an array, and all the arrays are gro
  */
 
 // M Y  S O L U T I O N
-function pairElement( str ) {
+function pairElement(str) {
   // create empty Pair array
   let basePairs = [];
-  
+
   // create a for each loop
-  [...str].forEach( letter => {
+  [...str].forEach(letter => {
     // we only have 4 options, so maybe a switch is a good idea?
-    switch ( letter ) {
+    switch (letter) {
       case 'G':
-        basePairs.push( ['G', 'C'] );
+        basePairs.push(['G', 'C']);
         break;
       case 'C':
-        basePairs.push( ['C', 'G'] );
+        basePairs.push(['C', 'G']);
         break;
       case 'A':
-        basePairs.push( ['A', 'T'] );
+        basePairs.push(['A', 'T']);
         break;
       case 'T':
-        basePairs.push( ['T', 'A'] );
+        basePairs.push(['T', 'A']);
         break;
       default:
         break;
     }
-  } );
-  
+  });
+
   return basePairs;
 }
 
@@ -42,30 +42,62 @@ function pairElement( str ) {
 
 let algorithmToTest = pairElement;
 
-let input,
-    expected;
+let input, expected;
 
 const tests = [
-  ['GCG', [['G', 'C'], ['C', 'G'], ['G', 'C']]],
-  ['ATCGA', [['A', 'T'], ['T', 'A'], ['C', 'G'], ['G', 'C'], ['A', 'T']]],
-  ['TTGAG', [['T', 'A'], ['T', 'A'], ['G', 'C'], ['A', 'T'], ['G', 'C']]],
-  ['CTCTA', [['C', 'G'], ['T', 'A'], ['C', 'G'], ['T', 'A'], ['A', 'T']]]
+  [
+    'GCG',
+    [
+      ['G', 'C'],
+      ['C', 'G'],
+      ['G', 'C'],
+    ],
+  ],
+  [
+    'ATCGA',
+    [
+      ['A', 'T'],
+      ['T', 'A'],
+      ['C', 'G'],
+      ['G', 'C'],
+      ['A', 'T'],
+    ],
+  ],
+  [
+    'TTGAG',
+    [
+      ['T', 'A'],
+      ['T', 'A'],
+      ['G', 'C'],
+      ['A', 'T'],
+      ['G', 'C'],
+    ],
+  ],
+  [
+    'CTCTA',
+    [
+      ['C', 'G'],
+      ['T', 'A'],
+      ['C', 'G'],
+      ['T', 'A'],
+      ['A', 'T'],
+    ],
+  ],
 ];
 
-tests.forEach( test => {
+tests.forEach(test => {
   [input, expected] = test;
-  
-  let results = algorithmToTest( input );
-  
-  if ( results.toString() !== expected.toString() ) {
+
+  let results = algorithmToTest(input);
+
+  if (results.toString() !== expected.toString()) {
     console.error(
-      `FAILED:  "${input}" | got "${results}" | expected >${expected}<`
+      `FAILED:  "${input}" | got "${results}" | expected >${expected}<`,
     );
+  } else {
+    console.log(`SUCCESS: Got "${expected}" for "${input}"`);
   }
-  else {
-    console.log( `SUCCESS: Got "${expected}" for "${input}"` );
-  }
-} );
+});
 
 // ------------------------------------------------------------------------
 // F C C  S O L U T I O N S
@@ -74,7 +106,7 @@ tests.forEach( test => {
 function pairElement1(str) {
   // Return each strand as an array of two elements, the original and the pair.
   var paired = [];
-  
+
   // Function to check with strand to pair.
   var search = function(char) {
     switch (char) {
@@ -92,12 +124,12 @@ function pairElement1(str) {
         break;
     }
   };
-  
+
   // Loops through the input and pair.
   for (var i = 0; i < str.length; i++) {
     search(str[i]);
   }
-  
+
   return paired;
 }
 
@@ -107,15 +139,15 @@ function pairElement1(str) {
 function pairElement2(str) {
   //create object for pair lookup
   var pairs = {
-    "A": "T",
-    "T": "A",
-    "C": "G",
-    "G": "C"
-  }
+    A: 'T',
+    T: 'A',
+    C: 'G',
+    G: 'C',
+  };
   //split string into array of characters
-  var arr = str.split("");
+  var arr = str.split('');
   //map character to array of character and matching pair
-  return arr.map(x => [x,pairs[x]]);
+  return arr.map(x => [x, pairs[x]]);
 }
 
 // ------------------------------------------------------------------------

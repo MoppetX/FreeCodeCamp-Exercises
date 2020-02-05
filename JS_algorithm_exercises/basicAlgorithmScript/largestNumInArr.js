@@ -1,45 +1,47 @@
 // Return an array consisting of the largest number from each provided sub-array.
 // For simplicity, the provided array will contain exactly 4 sub-arrays.
 
-function largestOfFour( arr ) {
+function largestOfFour(arr) {
   // You can do this!
-  
+
   // M Y  S O L U T I O N
   // to deal with only a simple array at a time, we're mapping
   // then we reduce the current array down to its largest num and return that
-  
-  return arr.map( ( subArr ) => {
-    return subArr.reduce( ( prev, curr ) => {
+
+  return arr.map(subArr => {
+    return subArr.reduce((prev, curr) => {
       return prev > curr ? prev : curr;
-    } );
-  } );
+    });
+  });
 }
 
 // largestOfFour( [[4, 5, 1, 3], [13, 27, 18, 26], [32, 35, 37, 39], [1000, 1001, 857, 1]] );
-largestOfFour( [[17, 23, 25, 12], [25, 7, 34, 48], [4, -10, 18, 21], [-72, -3, -17, -10]] );
+largestOfFour([
+  [17, 23, 25, 12],
+  [25, 7, 34, 48],
+  [4, -10, 18, 21],
+  [-72, -3, -17, -10],
+]);
 
 // should return [25, 48, 21, -3]
 
 // F C C  SO L U T I O N S
 // Basic Code Solution
 
-function largestOfFour2( arr ) {
+function largestOfFour2(arr) {
   var results = [];
-  
+
   // Create an outer loop to iterate through the outer array.
-  for ( var n = 0; n < arr.length; n++ ) {
-    
+  for (var n = 0; n < arr.length; n++) {
     // Create a second variable to hold the largest number and initialise it with the first number.
     // This must be outside an inner loop so it won’t be reassigned until we find a larger number.
     var largestNumber = arr[n][0];
-    
+
     // Create said inner loop to work with the sub-arrays.
-    for ( var sb = 1; sb < arr[n].length; sb++ ) {
-      
+    for (var sb = 1; sb < arr[n].length; sb++) {
       // Check if the element of the sub array is larger than the currently stored largest number.
       // If so, then update the number in the variable.
-      if ( arr[n][sb] > largestNumber ) {
-        
+      if (arr[n][sb] > largestNumber) {
         // After the inner loop, save the largest number in the corresponding position inside of
         // the results array
         largestNumber = arr[n][sb];
@@ -47,24 +49,24 @@ function largestOfFour2( arr ) {
     }
     results[n] = largestNumber;
   }
-  
+
   return results;
 }
 
 // intermediate Code Solution
 
-function largestOfFour3( arr ) {
-  return arr.map( function( group ) {
-    return group.reduce( function( prev, current ) {
-      return (current > prev) ? current : prev;
-    } );
-  } );
+function largestOfFour3(arr) {
+  return arr.map(function(group) {
+    return group.reduce(function(prev, current) {
+      return current > prev ? current : prev;
+    });
+  });
 }
 
 // Advanced Code Solution
 
-function largestOfFour4( arr ) {
-  return arr.map( Function.apply.bind( Math.max, null ) );
+function largestOfFour4(arr) {
+  return arr.map(Function.apply.bind(Math.max, null));
 }
 
 // TL;DR: We build a special callback function (using the Function.bind method),

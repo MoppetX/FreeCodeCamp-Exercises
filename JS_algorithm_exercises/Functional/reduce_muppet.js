@@ -1,4 +1,4 @@
-const data = require("./reduce_data.js");
+const data = require('./reduce_data.js');
 
 let debug = true;
 debug = false;
@@ -15,19 +15,19 @@ function addScores({ runningTotal, counter }, popularity) {
   return {
     runningTotal: runningTotal + popularity,
     counter: counter + 1,
-    avg: runningTotal / counter
+    avg: runningTotal / counter,
   };
 }
 
 console.log(
   data
-    .filter(movie => movie["Director"] === "Christopher Nolan")
-    .map(movie => parseFloat(movie["imdbRating"]))
+    .filter(movie => movie['Director'] === 'Christopher Nolan')
+    .map(movie => parseFloat(movie['imdbRating'])),
 );
 
 let averageRating = data
-  .filter(movie => movie["Director"] === "Christopher Nolan")
-  .map(movie => parseFloat(movie["imdbRating"]))
+  .filter(movie => movie['Director'] === 'Christopher Nolan')
+  .map(movie => parseFloat(movie['imdbRating']))
   .reduce(
     ({ runningTotal, counter, avg }, curr) => {
       // console.log( `TOTAL: ${runningTotal}, counter: ${counter},  AVG:${avg}` );
@@ -39,19 +39,19 @@ let averageRating = data
       return {
         runningTotal,
         counter,
-        avg
+        avg,
       };
     },
-    { runningTotal: 0, counter: 0, avg: 1 }
+    { runningTotal: 0, counter: 0, avg: 1 },
   );
 
 console.log(
-  `1a: TOTAL: ${averageRating.runningTotal}, COUNTER: ${averageRating.counter}, AVG: ${averageRating.avg}`
+  `1a: TOTAL: ${averageRating.runningTotal}, COUNTER: ${averageRating.counter}, AVG: ${averageRating.avg}`,
 );
 
 averageRating = data
-  .filter(movie => movie["Director"] === "Christopher Nolan")
-  .map(movie => parseFloat(movie["imdbRating"]))
+  .filter(movie => movie['Director'] === 'Christopher Nolan')
+  .map(movie => parseFloat(movie['imdbRating']))
   .reduce(
     ({ runningTotal, avg }, curr, idx, orig) => {
       // console.log( `TOTAL: ${runningTotal}, index: ${idx},  AVG:${avg}` );
@@ -61,19 +61,19 @@ averageRating = data
 
       return {
         runningTotal,
-        avg
+        avg,
       };
     },
-    { runningTotal: 0, avg: 0 }
+    { runningTotal: 0, avg: 0 },
   );
 
 console.log(
-  `1b: TOTAL: ${averageRating.runningTotal}, COUNTER: X, AVG: ${averageRating.avg}`
+  `1b: TOTAL: ${averageRating.runningTotal}, COUNTER: X, AVG: ${averageRating.avg}`,
 );
 
 averageRating = data
-  .filter(movie => movie["Director"] === "Christopher Nolan")
-  .map(movie => parseFloat(movie["imdbRating"]))
+  .filter(movie => movie['Director'] === 'Christopher Nolan')
+  .map(movie => parseFloat(movie['imdbRating']))
   .reduce((avg, curr, idx, orig) => {
     // console.log( `TOTAL: ${runningTotal}, index: ${idx},  AVG:${avg}` );
 
@@ -84,15 +84,15 @@ averageRating = data
     avg = total / (idx + 1);
 
     return {
-      avg
+      avg,
     };
   }, 0);
 
 console.log(`1c: TOTAL: XY.Z, COUNTER: X, AVG: ${averageRating.avg}`);
 
 averageRating = data
-  .filter(movie => movie["Director"] === "Christopher Nolan")
-  .map(movie => parseFloat(movie["imdbRating"]))
+  .filter(movie => movie['Director'] === 'Christopher Nolan')
+  .map(movie => parseFloat(movie['imdbRating']))
   .reduce((avg, curr, idx, orig) => {
     // console.log( `TOTAL: ${runningTotal}, index: ${idx},  AVG:${avg}` );
 
@@ -102,7 +102,7 @@ averageRating = data
     }
 
     return {
-      avg
+      avg,
     };
   }, 0);
 
@@ -116,7 +116,7 @@ const reducer = ({ runningTotal, counter, avg }, curr) => {
   // avg = runningTotal / counter;
 
   function tot() {
-    debug && console.log("IN tot()");
+    debug && console.log('IN tot()');
     debug && console.log(runningTotal);
     debug && console.log(curr);
 
@@ -128,7 +128,7 @@ const reducer = ({ runningTotal, counter, avg }, curr) => {
   }
 
   function count() {
-    debug && console.log("IN count()");
+    debug && console.log('IN count()');
     debug && console.log(counter);
 
     counter += 1;
@@ -139,7 +139,7 @@ const reducer = ({ runningTotal, counter, avg }, curr) => {
   }
 
   function average() {
-    debug && console.log("IN average()");
+    debug && console.log('IN average()');
     debug && console.log(runningTotal);
     debug && console.log(counter);
 
@@ -153,17 +153,17 @@ const reducer = ({ runningTotal, counter, avg }, curr) => {
   return {
     runningTotal: tot(),
     counter: count(),
-    avg: average()
+    avg: average(),
   };
 };
 
 averageRating = data
-  .filter(movie => movie["Director"] === "Christopher Nolan")
-  .map(movie => parseFloat(movie["imdbRating"]))
+  .filter(movie => movie['Director'] === 'Christopher Nolan')
+  .map(movie => parseFloat(movie['imdbRating']))
   .reduce(reducer, { runningTotal: 0, counter: 0, avg: 1 });
 
 // Add your code above this line
 
 console.log(
-  `2a: TOTAL: ${averageRating.runningTotal}, COUNTER: ${averageRating.counter}, AVG: ${averageRating.avg}`
+  `2a: TOTAL: ${averageRating.runningTotal}, COUNTER: ${averageRating.counter}, AVG: ${averageRating.avg}`,
 );

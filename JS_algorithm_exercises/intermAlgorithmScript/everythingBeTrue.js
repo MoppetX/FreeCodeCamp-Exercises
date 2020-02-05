@@ -8,48 +8,50 @@ In JavaScript, truthy values are values that translate to true when evaluated in
 
 // M Y  S O L U T I O N
 
-function truthCheck( collection, pre ) {
+function truthCheck(collection, pre) {
   // Is everyone being true?
-  
-  return collection.every( item => Boolean( item[pre] ) );
+
+  return collection.every(item => Boolean(item[pre]));
 }
 
-truthCheck( [{ 'user': 'Tinky-Winky', 'sex': 'male' },
-              { 'user': 'Dipsy', 'sex': 'male' },
-              { 'user': 'Laa-Laa', 'sex': 'female' },
-              { 'user': 'Po', 'sex': 'female' }],
-            'sex' );
+truthCheck(
+  [
+    { user: 'Tinky-Winky', sex: 'male' },
+    { user: 'Dipsy', sex: 'male' },
+    { user: 'Laa-Laa', sex: 'female' },
+    { user: 'Po', sex: 'female' },
+  ],
+  'sex',
+);
 
 // ------------------------------------------------------------------------
 //   T E S T S
 
 const tests = [
   [10, 17],
-  [977, 73156]
+  [977, 73156],
 ];
 
 let algorithmToTest = truthCheck;
 
-let input,
-    expected;
+let input, expected;
 
 // runTests();
 
 function runTests() {
-  tests.forEach( test => {
+  tests.forEach(test => {
     [input, expected] = test;
-    
-    let results = algorithmToTest( input );
-    
-    if ( results !== expected ) {
+
+    let results = algorithmToTest(input);
+
+    if (results !== expected) {
       console.error(
-        `FAILED:  "${input}" | got "${results}" | expected >${expected}<`
+        `FAILED:  "${input}" | got "${results}" | expected >${expected}<`,
       );
+    } else {
+      console.log(`SUCCESS: Got "${expected}" for "${input}"`);
     }
-    else {
-      console.log( `SUCCESS: Got "${expected}" for "${input}"` );
-    }
-  } );
+  });
 }
 
 // ------------------------------------------------------------------------
@@ -74,7 +76,7 @@ function truthCheck1(collection, pre) {
 // I N T E R M E D I A T E  Solution
 
 function truthCheck2(collection, pre) {
-  return collection.every(function (element) {
+  return collection.every(function(element) {
     return element.hasOwnProperty(pre) && Boolean(element[pre]);
   });
 }

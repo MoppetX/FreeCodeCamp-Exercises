@@ -4,17 +4,15 @@
 function truncateString(str, num) {
   // Clear out that junk in your trunk
   // M Y  S O L U T I O N
-  
-  return str.length <= num ? str : str.slice(0, num) + "...";
+
+  return str.length <= num ? str : str.slice(0, num) + '...';
 }
 
-console.log( truncateString( 'A-tisket a-tasket A green and yellow basket', 8) );
-console.log( truncateString2( 'A-tisket a-tasket A green and yellow basket', 8) );
-console.log( truncateString3( 'A-tisket a-tasket A green and yellow basket', 8) );
-
+console.log(truncateString('A-tisket a-tasket A green and yellow basket', 8));
+console.log(truncateString2('A-tisket a-tasket A green and yellow basket', 8));
+console.log(truncateString3('A-tisket a-tasket A green and yellow basket', 8));
 
 // console.log( truncateString( "A-", 1 ) );
-
 
 // F C C  S O L U T I O N S
 //
@@ -23,7 +21,7 @@ console.log( truncateString3( 'A-tisket a-tasket A green and yellow basket', 8) 
 function truncateString2(str, num) {
   // Clear out that junk in your trunk
   if (str.length > num && num > 3) {
-    return str.slice(0, (num - 3)) + '...';
+    return str.slice(0, num - 3) + '...';
   } else if (str.length > num && num <= 3) {
     return str.slice(0, num) + '...';
   } else {

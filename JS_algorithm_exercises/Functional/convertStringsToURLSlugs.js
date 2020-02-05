@@ -14,26 +14,26 @@
 let globalTitle = 'Winter   Is Coming';
 
 // Add your code below this line
-function urlSlug( title ) {
-  
-  return title.toLowerCase()
-              .split( /\W/ )
-              .filter( elem => elem !== '' )
-              .join( '-' );
-  
+function urlSlug(title) {
+  return title
+    .toLowerCase()
+    .split(/\W/)
+    .filter(elem => elem !== '')
+    .join('-');
 }
 
 // Add your code above this line
 
-let winterComing = urlSlug( globalTitle ); // Should be "winter-is-coming"
-console.log( winterComing );
+let winterComing = urlSlug(globalTitle); // Should be "winter-is-coming"
+console.log(winterComing);
 
 //
 // F C C  S O L U T I O N
 
-function urlSlug2( title ) {
-  return title.toLowerCase()
-              .trim()
-              .split( /\s+/ )
-              .join( '-' );
+function urlSlug2(title) {
+  return title
+    .toLowerCase()
+    .trim()
+    .split(/\s+/)
+    .join('-');
 }

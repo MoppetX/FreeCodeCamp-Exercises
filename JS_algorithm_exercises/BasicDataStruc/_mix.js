@@ -150,7 +150,6 @@
 //
 // console.log( isEveryoneHere( users ) );
 
-
 //
 // -----------------------------------------------------------------------------------------
 // Check if an Object has a Property
@@ -160,42 +159,35 @@
 // loop through the users in the users object and return the number of users whose online
 // property is set to true.
 
-
 let users = {
   Alan: {
     age: 27,
-    online: false
+    online: false,
   },
   Jeff: {
     age: 32,
-    online: true
+    online: true,
   },
   Sarah: {
     age: 48,
-    online: false
+    online: false,
   },
   Ryan: {
     age: 19,
-    online: true
-  }
+    online: true,
+  },
 };
 
 function countOnline(obj) {
   // change code below this line
   let count = 0;
-  
+
   for (let user in obj) {
-    obj[user].online ? count++ : "";
+    obj[user].online ? count++ : '';
   }
   return count;
-  
+
   // change code above this line
 }
 
 console.log(countOnline(users));
-
-
-
-
-
-

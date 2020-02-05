@@ -3,20 +3,18 @@
 // of the same value as these arguments.
 
 // M Y  S O L U T I O N
-function destroyer( arr ) {
-  
-  if ( !Array.isArray( arr ) ) {
+function destroyer(arr) {
+  if (!Array.isArray(arr)) {
     return 'only arrays are allowed';
   }
-  
+
   let [, ...rest] = [...arguments];
-  
-  return arr.filter( value => !rest.includes( value ) );
-  
+
+  return arr.filter(value => !rest.includes(value));
 }
 
-console.log( destroyer( [1, 2, 3, 1, 2, 3], 2, 3 ) );
-console.log( destroyer([3, 5, 1, 2, 2], 2, 3, 5));
+console.log(destroyer([1, 2, 3, 1, 2, 3], 2, 3));
+console.log(destroyer([3, 5, 1, 2, 2], 2, 3, 5));
 
 // ------------------------------------------------------------------------
 // F C C  S O L U T I O N S
@@ -24,7 +22,7 @@ console.log( destroyer([3, 5, 1, 2, 2], 2, 3, 5));
 
 function destroyer1(arr) {
   var args = Array.prototype.slice.call(arguments);
-  
+
   for (var i = 0; i < arr.length; i++) {
     for (var j = 0; j < args.length; j++) {
       if (arr[i] === args[j]) {

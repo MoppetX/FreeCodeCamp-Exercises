@@ -12,30 +12,29 @@ If either argument isn't a valid number, return undefined.
 
 // M Y  S O L U T I O N
 
-function addTogether( a, b ) {
+function addTogether(a, b) {
   // if only one arg, return func to add
-  
-  let args = Array.from( arguments );
-  
-  function isNum( num ) {
+
+  let args = Array.from(arguments);
+
+  function isNum(num) {
     return typeof num === 'number';
   }
-  
-  if ( args.some( n => !isNum( n ) ) ) {
+
+  if (args.some(n => !isNum(n))) {
     return undefined;
   }
-  if ( args.length > 1 ) {
-    return args.reduce( ( acc, cur ) => acc + cur, 0 );
+  if (args.length > 1) {
+    return args.reduce((acc, cur) => acc + cur, 0);
   }
-  
-  return function( b ) {
-    return isNum( b ) ? a + b : undefined;
+
+  return function(b) {
+    return isNum(b) ? a + b : undefined;
   };
-  
 }
 
 // addTogether( 2, 3 );
-console.log( addTogether( 2, [3] ) );
+console.log(addTogether(2, [3]));
 
 // ------------------------------------------------------------------------
 //   T E S T S
@@ -48,26 +47,24 @@ const tests = [
 
 let algorithmToTest = addTogether;
 
-let input,
-    expected;
+let input, expected;
 
 // runTests();
 
 function runTests() {
-  tests.forEach( test => {
+  tests.forEach(test => {
     [input, expected] = test;
-    
-    let results = algorithmToTest( input );
-    
-    if ( results !== expected ) {
+
+    let results = algorithmToTest(input);
+
+    if (results !== expected) {
       console.error(
-        `FAILED:  "${input}" | got "${results}" | expected >${expected}<`
+        `FAILED:  "${input}" | got "${results}" | expected >${expected}<`,
       );
+    } else {
+      console.log(`SUCCESS: Got "${expected}" for "${input}"`);
     }
-    else {
-      console.log( `SUCCESS: Got "${expected}" for "${input}"` );
-    }
-  } );
+  });
 }
 
 // ------------------------------------------------------------------------
@@ -78,35 +75,33 @@ function runTests() {
 // I N T E R M E D I A T E  Solution
 
 function addTogether2() {
-  let args = new Array( arguments.length );
+  let args = new Array(arguments.length);
   //Storing the arguments in an array
-  for ( let i = 0; i < args.length; ++i ) {
+  for (let i = 0; i < args.length; ++i) {
     args[i] = arguments[i];
   }
   //Check for the arguments length
-  if ( args.length === 2 ) {
+  if (args.length === 2) {
     //If there are two arguments,check for the type of both arguments
     //Use typeof to check the type of the argument(both should be numbers)
-    if ( typeof args[0] !== 'number' || typeof args[1] !== 'number' ) {
+    if (typeof args[0] !== 'number' || typeof args[1] !== 'number') {
       return undefined;
     }
     return args[0] + args[1];
   }
   //When only one argument is provided
-  if ( args.length === 1 ) {
+  if (args.length === 1) {
     a = args[0];
     //Check the  argument using typeof
-    if ( typeof a !== 'number' ) {
+    if (typeof a !== 'number') {
       return undefined;
-    }
-    else {
+    } else {
       //Making use of closures
-      return function( b ) {
+      return function(b) {
         //Checking the second argument
-        if ( typeof b !== 'number' ) {
+        if (typeof b !== 'number') {
           return undefined;
-        }
-        else {
+        } else {
           return a + b;
         }
       };
@@ -118,12 +113,10 @@ function addTogether2() {
 // A D V A N C E D Solution
 
 function addTogether3() {
-  let args = Array.from( arguments );
-  return args.some( n => typeof n !== 'number' ) ?
-    undefined :
-    args.length > 1 ?
-      args.reduce( ( acc, n ) => acc += n, 0 ) :
-      ( n ) => typeof n === 'number' ?
-        n + args[0] :
-        undefined;
+  let args = Array.from(arguments);
+  return args.some(n => typeof n !== 'number')
+    ? undefined
+    : args.length > 1
+    ? args.reduce((acc, n) => (acc += n), 0)
+    : n => (typeof n === 'number' ? n + args[0] : undefined);
 }
